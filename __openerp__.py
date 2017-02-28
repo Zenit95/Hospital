@@ -16,6 +16,6 @@ Se podra administrar las consultas:
    'version': '1.1',
    'depends': ['base'],
    'data': [
-        'views/views.xml'
+        'views/hospital.xml'
     ],
 }

@@ -1,61 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
      <data>
-        <!--Consultas-->
-        <record model="ir.ui.view" id="consultas_form_view">
-            <field name="name">consultas.form</field>
-            <field name="model">consultas</field>
+        <!--medico-->
+        <record model="ir.ui.view" id="medico_form_view">
+            <field name="name">medico.form</field>
+            <field name="model">hospital.medico</field>
             <field name="type">form</field>
                 <field name="arch" type="xml">
-                   <form string="consultas">
+                   <form string="Medico">
                        <group>
                            <field name="name"/>
-                           <field name="partner_id"/>
-                           <field name="especialidades"/>
+                           <field name="especialidad"/>
+                           <!--field name="anyo_licen"/-->
+                           <!--<field name="anyos_experiencia"/-->
                        </group>
                    </form>                              
                 </field>
         </record>
-             
-        <record model="ir.ui.view" id="consultas_tree_form">
-            <field name="name">consultas.tree</field>
-            <field name="model">consultas</field>
+
+        <record model="ir.ui.view" id="medico_tree_view">
+            <field name="name">medico.tree</field>
+            <field name="model">hospital.medico</field>
             <field name="type">tree</field>
                 <field name="arch" type="xml">
-                   <tree string="consultas">
+                   <tree string="Medico">
                            <field name="name"/>
-                           <field name="partner_id"/>
-                           <field name="especialidades"/>
+                           <field name="especialidad"/>
+                          <!--> <field name="anyos_experiencia"/-->
                    </tree>                              
                 </field>
         </record>
 
-        <record model="ir.ui.view" id="consultas_search_view">
-            <field name="name">consultas.search</field>
-            <field name="model">consultas</field>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="name"/>
-                    <field name="partner_id"/>
-                    <field name="especialidades"/>
-                </search>
-            </field>
+
+        <record model="ir.actions.act_window" id="action_medico">
+            <field name="name">Medico</field>
+            <field name="res_model">hospital.medico</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
         </record>
         
-        <record model="ir.actions.act_window" id="action_consultas">
-            <field name="name">Consultas</field>
-            <field name="res_model">consultas</field>
+        <!--paciente-->
+        <record model="ir.ui.view" id="paciente_form_view">
+            <field name="name">paciente.form</field>
+            <field name="model">hospital.paciente</field>
+            <field name="type">form</field>
+                <field name="arch" type="xml">
+                   <form string="Paciente">
+                       <group>
+                           <field name="name"/>
+                       </group>
+                   </form>                              
+                </field>
+        </record>
+
+        <record model="ir.ui.view" id="paciente_tree_view">
+            <field name="name">paciente.tree</field>
+            <field name="model">hospital.paciente</field>
+            <field name="type">tree</field>
+                <field name="arch" type="xml">
+                   <tree string="Paciente">
+                           <field name="name"/>
+                   </tree>                              
+                </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_paciente">
+            <field name="name">Paciente</field>
+            <field name="res_model">hospital.paciente</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <!--Especialidad-->
-        <record model="ir.ui.view" id="especialidades_form_view">
-            <field name="name">especialidades.form</field>
-            <field name="model">especialidades</field>
+        <record model="ir.ui.view" id="especialidad_form_view">
+            <field name="name">especialidad.form</field>
+            <field name="model">hospital.especialidad</field>
             <field name="type">form</field>
                 <field name="arch" type="xml">
-                   <form string="especialidades">
+                   <form string="Especialidad">
                        <group>
                            <field name="name"/>                           
                        </group>
@@ -63,69 +86,82 @@
                 </field>
         </record>
 
-        <record model="ir.ui.view" id="especialidades_tree_view">
-            <field name="name">especialidades.tree</field>
-            <field name="model">especialidades</field>
+        <record model="ir.ui.view" id="especialidad_tree_view">
+            <field name="name">especialidad.tree</field>
+            <field name="model">hospital.especialidad</field>
             <field name="type">tree</field>
                 <field name="arch" type="xml">
-                   <tree string="especialidades">
+                   <tree string="Especialidad">
                            <field name="name"/>                       
                    </tree>                              
                 </field>
         </record>
 
-        <record model="ir.actions.act_window" id="action_especialidades">
-            <field name="name">Especialidades</field>
-            <field name="res_model">especialidades</field>
+        <record model="ir.actions.act_window" id="action_especialidad">
+            <field name="name">Especialidad</field>
+            <field name="res_model">hospital.especialidad</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-
-        <!--Medicos-->
-        <record model="ir.ui.view" id="medicos_form_view">
-            <field name="name">medicos.form</field>
-            <field name="model">medicos</field>
+    
+        <!--consulta-->
+        <record model="ir.ui.view" id="consulta_form_view">
+            <field name="name">consulta.form</field>
+            <field name="model">hospital.consulta</field>
             <field name="type">form</field>
                 <field name="arch" type="xml">
-                   <form string="medicos">
+                   <form string="consulta">
                        <group>
                            <field name="name"/>
+                           <field name="paciente_id"/>
                            <field name="especialidad"/>
                        </group>
                    </form>                              
                 </field>
         </record>
-
-        <record model="ir.ui.view" id="medicos_tree_view">
-            <field name="name">medicos.tree</field>
-            <field name="model">medicos</field>
+             
+        <record model="ir.ui.view" id="consulta_tree_form">
+            <field name="name">consulta.tree</field>
+            <field name="model">hospital.consulta</field>
             <field name="type">tree</field>
                 <field name="arch" type="xml">
-                   <tree string="medicos">
+                   <tree string="consulta">
                            <field name="name"/>
+                           <field name="paciente_id"/>
                            <field name="especialidad"/>
                    </tree>                              
                 </field>
         </record>
 
-
-        <record model="ir.actions.act_window" id="action_medicos">
-            <field name="name">Medicos</field>
-            <field name="res_model">medicos</field>
+        <record model="ir.ui.view" id="consulta_search_view">
+            <field name="name">consulta.search</field>
+            <field name="model">hospital.consulta</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="paciente_id"/>
+                    <field name="especialidad"/>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_consulta">
+            <field name="name">Consulta</field>
+            <field name="res_model">hospital.consulta</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
         <!--Menu-->
         <!--Parte Superior-->
-        <menuitem id="menu_main" name="Hospital" sequence="10"/>
+        <menuitem id="label" name="Hospital" sequence="10"/>
         <!--Parte lateral-->
-        <menuitem id="menu_gestion" name="Gestion" sequence="10" parent="menu_main"/>
-        <menuitem id="menu_consultas" name="Consultas" sequence="10" parent="menu_main"/>
+        <menuitem id="menu_main" name="Hospital" sequence="10" parent="label"/>
         <!--Lateral submenu-->
-        <menuitem id="menu_consultas_medicos" name="Consultas" sequence="10" parent="menu_consultas" action="action_consultas"/>
-        <menuitem id="menu_gestion_especialidades" name="Especialidades" sequence="10" parent="menu_gestion" action="action_especialidades"/>
-        <menuitem id="menu_gestion_medicos" name="Medicos" sequence="10" parent="menu_gestion" action="action_medicos"/>
+        <menuitem id="menu_gestion_medico" name="Medico" sequence="10" parent="menu_main" action="action_medico"/>
+        <menuitem id="menu_gestion_paciente" name="Paciente" sequence="10" parent="menu_main" action="action_paciente"/>
+        <menuitem id="menu_gestion_especialidad" name="Especialidad" sequence="10" parent="menu_main" action="action_especialidad"/>
+        <menuitem id="menu_gestion_consulta" name="Consulta" sequence="10" parent="menu_main" action="action_consulta"/>
 
 
      </data>
