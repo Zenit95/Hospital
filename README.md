@@ -1,0 +1,2 @@
+# Hospital
+Modulo Odoo Hospital
