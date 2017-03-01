@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
     
 from openerp import models, fields, api
-from datetime import date, datetime
 
 class Persona(models.Model):
     _name = 'hospital.persona'
@@ -14,21 +13,15 @@ class Medico(models.Model):
     _inherit = 'hospital.persona'
     
     especialidad = fields.Many2one('hospital.especialidad', required=True)
-    """
-    anyo_licen = fields.Date()
-    anyos_experiencia = fields.Char()
+    nivel = fields.Integer()
+    experiencia = fields.Integer()
+    sanacion = fields.Integer(compute='_calc_san')
     
-    @api.onchange('anyo_licen')
-    def _calc_exp(self):
+    @api.depends('nivel', 'experiencia')
+    def _calc_san(self):
         for r in self:
-            if r.anyo_licen:
-                dt = r.anyo_licen
-                d1 = datetime.strptime(dt, "%Y-%m-%d").date()
-                d2 = date.today()
-                rd = d2 - d1
-                rd_years = rd.strftime("%Y")
-                r.anyos_experiencia = rd_years
-    """
+            r.sanacion = r.nivel * r.experiencia
+            
     
 class Paciente(models.Model):
     _name = 'hospital.paciente'
